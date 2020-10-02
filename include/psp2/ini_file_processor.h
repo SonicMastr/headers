@@ -69,7 +69,7 @@ public:
 	int terminateForError();
 
 	/**
-	 * Get INI as a char array
+	 * Get INI as a string. The returned buffer is not null-terminated.
 	 *
 	 * @param[out] ini - memory where INI data is stored
 	 * @param[out] size - size of the INI data
@@ -79,7 +79,7 @@ public:
 	int serialize(const char** ini, size_t* size);
 
 	/**
-	 * Process INI as a char array
+	 * Process INI as a string. Size is without null-terminator.
 	 *
 	 * @param[in] ini - memory where INI data is stored
 	 * @param[in] size - size of the INI data
@@ -97,7 +97,7 @@ public:
 	 *
 	 * @return 0 on success, < 0 on error.
 	 */
-	int openFile(const char* path, const char* mode, int unk);
+	int open(const char* path, const char* mode, int unk);
 
 	/**
 	 * Create new INI file and open it. If file is already present, it will be overwritten
@@ -109,17 +109,17 @@ public:
 	 * @return 0 on success, < 0 on error.
 	 *
 	 */
-	int createFile(const char* path, const char* mode, int unk);
+	int create(const char* path, const char* mode, int unk);
 
 	/**
-	 * Close file
+	 * Close INI file
 	 *
 	 * @return 0 on success, < 0 on error.
 	 */
-	int closeFile();
+	int close();
 
 	/**
-	 * Clean temp files
+	 * Cleanup temp files
 	 *
 	 * @return 0 on success, < 0 on error.
 	 */
@@ -166,11 +166,12 @@ public:
 	 *
 	 * @param[in] key - key string
 	 * @param[out] val - buffer to store value string if found
-	 * @param[in] size - size of outValueBuf
+	 * @param[in] size - size of the output buffer
+	 * @param[in] offset - offset into the value corresponding to key
 	 *
 	 * @return 0 on success, < 0 on error.
 	 */
-	int get(const char* key, char* val, size_t size);
+	int get(const char* key, char* val, size_t size, size_t offset);
 
 	/**
 	 * Parse key and corresponding value, one key per call until eof
