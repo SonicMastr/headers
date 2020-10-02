@@ -136,6 +136,11 @@ typedef struct SceAppMgrBudgetInfo {
 // 0x88
 } SceAppMgrBudgetInfo;
 
+typedef struct SceAppMgrTrcNotification {
+    int unk;                           //!< Set to 0
+    char message[0x3C];                //!< Must be null-terminated
+} SceAppMgrTrcNotification;
+
 /**
  * Save data on savedata0: partition
  *
@@ -535,6 +540,11 @@ int _sceAppMgrGetRawPathOfApp0ByAppIdForShell(int appId, char resolved_path[292]
  *
  */
 int sceAppMgrGetBudgetInfo(SceAppMgrBudgetInfo *info);
+
+/**
+ * Set unk to 0.
+ */
+int sceAppMgrSendNotificationRequest(SceAppMgrTrcNotification *notification, int unk);
 
 /**
  * Shared Framebuffer
