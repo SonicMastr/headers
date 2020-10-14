@@ -448,6 +448,16 @@ modules:
           sceAudioOutSetEffectType: 0xB41FACCE
           sceAudioOutSetPortVolume_forUser: 0x65840F3D
           sceAudioOutSetVolume: 0x64167F11
+  SceAudiocodec:
+    nid: 0x799A8649
+    libraries:
+      SceAudiocodec:
+        kernel: false
+        nid: 0x0984774F
+        functions:
+          sceAudiocodecDecode: 0xE827E04F
+          sceAudiocodecInit: 0x1F9A3722
+          sceAudiocodecQueryMemSize: 0xE2AF3A54
   SceAudioin:
     nid: 0x3DFB6F18
     libraries:
