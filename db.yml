@@ -8853,8 +8853,6 @@ modules:
         nid: 0xA05BBEBB
         kernel: false
         functions:
-          sceShaccCg_7F430CCD: 0x7F430CCD
-          sceShaccCg_95F57A23: 0x95F57A23
           sceShaccCgCompileProgram: 0x66814F35
           sceShaccCgDestroyCompileOutput: 0xAA82EF0C
           sceShaccCgGetArrayParameter: 0xBB703EE1
